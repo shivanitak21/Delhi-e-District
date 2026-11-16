@@ -1,5 +1,5 @@
 {
-  "name": "tanstack_start_ts",
+  "name": "edistrict-delhi",
   "private": true,
   "sideEffects": false,
   "type": "module",
@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
-    "@lovable.dev/ai-gateway": "^0.1.11",
+    "ai-gateway": "file:vendor/ai-gateway",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",
     "@radix-ui/react-aspect-ratio": "^1.1.8",
@@ -73,7 +73,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
-    "@lovable.dev/vite-tanstack-config": "2.26.5",
     "@testing-library/jest-dom": "^6.6.0",
     "@testing-library/react": "^16.0.0",
     "@types/node": "^22.16.5",
@@ -95,5 +94,8 @@
     "vite": "8.1.5",
     "vitest": "^4.1.10",
     "ws": "^8.22.0"
+  },
+  "optionalDependencies": {
+    "@tailwindcss/oxide-win32-x64-msvc": "^4.3.5"
   }
 }

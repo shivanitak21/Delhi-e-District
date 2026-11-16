@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { signIn } from "@/lib/auth";
 
 export const Route = createFileRoute("/login")({
   head: () => ({
@@ -30,7 +31,15 @@ function LoginPage() {
       <main id="main" className="container-page flex min-h-[70vh] items-center justify-center py-16">
         <form
           className="w-full max-w-sm rounded-3xl border bg-card p-8 shadow-soft"
-          onSubmit={(e) => { e.preventDefault(); step === "mobile" ? setStep("otp") : navigate({ to: "/dashboard" }); }}
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (step === "mobile") {
+              setStep("otp");
+              return;
+            }
+            signIn();
+            navigate({ to: "/dashboard" });
+          }}
         >
           <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-accent text-accent-foreground"><Smartphone aria-hidden /></div>
           <h1 className="text-2xl font-semibold tracking-tight">Sign in / साइन इन</h1>

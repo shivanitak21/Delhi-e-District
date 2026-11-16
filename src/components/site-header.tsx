@@ -1,7 +1,9 @@
-import { Link, useMatchRoute } from "@tanstack/react-router";
-import { Menu, UserRound } from "lucide-react";
+import { Link, useMatchRoute, useNavigate } from "@tanstack/react-router";
+import { LogOut, Menu, UserRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { useAuth } from "@/hooks/use-auth";
+import { signOut } from "@/lib/auth";
 
 const NAV = [
   { label: "Home", to: "/" },
@@ -15,6 +17,14 @@ const NAV = [
 
 export function SiteHeader() {
   const matchRoute = useMatchRoute();
+  const navigate = useNavigate();
+  const signedIn = useAuth();
+
+  const handleSignOut = () => {
+    signOut();
+    navigate({ to: "/" });
+  };
+
   return (
     <header className="sticky top-0 z-50 bg-glass backdrop-blur-xl">
       <div className="bg-secondary text-muted-foreground">
@@ -37,13 +47,38 @@ export function SiteHeader() {
             ))}
           </nav>
           <div className="flex items-center gap-2">
-            <Button size="sm" asChild className="hidden sm:inline-flex"><Link to="/login"><UserRound aria-hidden />Sign in</Link></Button>
+            {signedIn ? (
+              <Button size="sm" variant="outline" className="hidden sm:inline-flex" onClick={handleSignOut}>
+                <LogOut aria-hidden />
+                Sign out
+              </Button>
+            ) : (
+              <Button size="sm" asChild className="hidden sm:inline-flex">
+                <Link to="/login">
+                  <UserRound aria-hidden />
+                  Sign in
+                </Link>
+              </Button>
+            )}
             <Sheet>
               <SheetTrigger asChild><Button variant="outline" size="icon" className="lg:hidden" aria-label="Open menu"><Menu aria-hidden /></Button></SheetTrigger>
               <SheetContent side="right" className="w-72">
                 <SheetHeader><SheetTitle className="text-left">e-District Delhi</SheetTitle></SheetHeader>
                 <nav className="mt-4 flex flex-col gap-1 px-4" aria-label="Mobile navigation">
                   {NAV.map((item) => <Button key={item.label} variant="ghost" asChild className="justify-start"><Link to={item.to} hash={item.hash ?? ""}>{item.label}</Link></Button>)}
+                  {signedIn ? (
+                    <Button variant="ghost" className="justify-start" onClick={handleSignOut}>
+                      <LogOut aria-hidden />
+                      Sign out
+                    </Button>
+                  ) : (
+                    <Button variant="ghost" asChild className="justify-start">
+                      <Link to="/login">
+                        <UserRound aria-hidden />
+                        Sign in
+                      </Link>
+                    </Button>
+                  )}
                 </nav>
               </SheetContent>
             </Sheet>

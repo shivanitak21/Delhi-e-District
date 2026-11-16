@@ -11,7 +11,7 @@ import {
   type ResponsesInputItem,
   type ResponsesRequest,
   type ResponsesResponse,
-} from "@lovable.dev/ai-gateway";
+} from "ai-gateway";
 
 export type LiveConfig = {
   liveModel: "openai/gpt-live-1";
