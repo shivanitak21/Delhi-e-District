@@ -1,0 +1,162 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Delhi e-District 2.0 design system.
+ *
+ * Apple-inspired silver surfaces and blue actions. All colors in oklch.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-saffron: var(--saffron);
+  --color-saffron-soft: var(--saffron-soft);
+  --color-gov-green: var(--gov-green);
+  --color-hero: var(--hero);
+  --color-hero-foreground: var(--hero-foreground);
+  --color-glass: var(--glass);
+  --shadow-soft: var(--surface-shadow);
+}
+
+:root {
+  --radius: 1.125rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.235 0.004 286);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--foreground);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--foreground);
+  --primary: oklch(0.53 0.19 255);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.97 0.003 286);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--secondary);
+  --muted-foreground: oklch(0.535 0.008 286);
+  --accent: oklch(0.945 0.018 250);
+  --accent-foreground: oklch(0.51 0.17 255);
+  --saffron: var(--foreground);
+  --saffron-soft: var(--secondary);
+  --gov-green: oklch(0.5 0.12 152);
+  --hero: var(--secondary);
+  --hero-foreground: var(--foreground);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.9 0.004 286);
+  --input: var(--border);
+  --ring: var(--accent-foreground);
+  --glass: oklch(1 0 0 / 82%);
+  --surface-shadow: 0 12px 36px oklch(0.235 0.004 286 / 5%);
+}
+
+.dark {
+  --background: oklch(0.19 0.004 286);
+  --foreground: oklch(0.97 0.006 84);
+  --card: oklch(0.235 0.004 286);
+  --card-foreground: oklch(0.97 0.006 84);
+  --popover: var(--card);
+  --popover-foreground: oklch(0.97 0.006 84);
+  --primary: oklch(0.64 0.18 255);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.28 0.004 286);
+  --secondary-foreground: oklch(0.97 0.006 84);
+  --muted: var(--secondary);
+  --muted-foreground: oklch(0.72 0.03 258);
+  --accent: oklch(0.3 0.04 255);
+  --accent-foreground: oklch(0.76 0.12 255);
+  --saffron: var(--foreground);
+  --saffron-soft: var(--secondary);
+  --gov-green: oklch(0.68 0.13 152);
+  --hero: var(--secondary);
+  --hero-foreground: oklch(0.97 0.006 84);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: var(--accent-foreground);
+  --glass: oklch(0.19 0.004 286 / 85%);
+  --surface-shadow: 0 12px 36px oklch(0 0 0 / 15%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    letter-spacing: 0;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: 0;
+  }
+}
+
+.tracking-tight, .tracking-wide { letter-spacing: 0; }
+.apple-intro { padding-block: 56px 36px; }
+.apple-title { font-size: 56px; line-height: 1.08; font-weight: 650; }
+.apple-service { transition: transform 200ms ease, box-shadow 200ms ease; }
+.apple-service:hover { transform: translateY(-3px); box-shadow: var(--surface-shadow); }
+@media (max-width: 640px) {
+  .apple-intro { padding-block: 40px 28px; }
+  .apple-title { font-size: 36px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .apple-service { transition: none; }
+  .apple-service:hover { transform: none; }
+}
+main > section.bg-hero { background: var(--background); }
+main > section.bg-hero h1 { font-size: 2.625rem; }
+@media (max-width: 640px) {
+  main > section.bg-hero h1 { font-size: 2rem; }
+}
+
+@layer utilities {
+  .container-page {
+    margin-inline: auto;
+    width: 100%;
+     max-width: 70rem;
+    padding-inline: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-page {
+      padding-inline: 1.5rem;
+    }
+  }
+}
